@@ -88,7 +88,6 @@ body{
     color: rgb(212, 211, 211);
     display: block;
     font-family: "Chiron Sung HK", serif;
-    f
 }
 .nav-a{
     text-decoration: none;
@@ -139,7 +138,7 @@ body{
 
 @media (max-width: 768px){
     .nav{
-        height:59rem;
+        height:52rem;
     }
     .nav-title{
         margin-left: 1.5rem;
