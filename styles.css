@@ -2,7 +2,8 @@ body{
     padding: 0px;
     margin: 0px;
     height: 200vw;
-    overflow-x: hidden
+    overflow-x: hidden;
+    font-family: "Chiron Sung HK", serif;
 }
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 ::selection {
@@ -122,6 +123,7 @@ body{
     font-size: 1.7rem;
     font-weight: 500;
     color:rgb(0, 0, 0);
+    font-family: "Chiron Sung HK", serif;
 }
 .white{
     color: white;
@@ -137,6 +139,9 @@ body{
 }
 
 @media (max-width: 768px){
+    body{
+        overflow-x: hidden;
+    }
     .nav{
         height:52rem;
     }
