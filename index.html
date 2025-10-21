@@ -50,30 +50,37 @@
             // -------------------------------
 
             /**
-             * Handles the scroll event to calculate and apply the zoom factor.
+             * Calculates and applies the zoom factor based on scroll position.
              */
-            const handleScrollZoom = () => {
-                // Get the vertical scroll position
-                const scrollY = window.scrollY;
-
+            const applyZoom = () => {
                 // Calculate the new scale based on scroll position and rate
-                let newScale = 1 + (scrollY * SCALE_RATE);
+                let newScale = 1 + (window.scrollY * SCALE_RATE);
 
                 // Clamp the scale value to prevent it from exceeding the maximum
-                if (newScale > MAX_SCALE) {
-                    newScale = MAX_SCALE;
-                }
+                newScale = Math.min(newScale, MAX_SCALE);
 
                 // Apply the transformation
                 video.style.transform = `scale(${newScale})`;
             };
 
+            let ticking = false;
+
+            const handleScroll = () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        applyZoom();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            };
+
             // Attach the function to the scroll event
-            window.addEventListener('scroll', handleScrollZoom);
+            window.addEventListener('scroll', handleScroll);
 
             // Run it once on load to set the correct initial state if the user 
             // loads the page already scrolled down (e.g., refreshing the page)
-            handleScrollZoom();
+            applyZoom();
         });
 
 
