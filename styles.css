@@ -1,0 +1,157 @@
+body{ 
+    padding: 0px;
+    margin: 0px;
+    height: 200vw;
+    overflow-x: hidden
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+::selection {
+    background-color: rgb(198, 196, 196);
+}
+
+
+/* For older WebKit browsers (like some Safari versions) */
+
+::-moz-selection {
+    background-color:rgb(198, 196, 196);
+}
+
+.nav{
+    
+    height: 30rem;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;  /* ensure children (like video) don't overflow */
+}
+.nav {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05); /* optional overlay */
+  mask-image: url('rough-edge-mask.png'); /* your torn edge PNG */
+  mask-size: cover;
+  -webkit-mask-image: url('rough-edge-mask.png');
+  -webkit-mask-size: cover;
+}
+
+.video1{
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    filter: brightness(60%);
+    object-fit: cover; /* ensure the video covers nav area without distortion */
+    z-index: -1;
+}
+.nav-links{
+    display: flex;
+    flex-direction: row;
+    justify-self: right;
+    font-size: 1.5rem;
+    padding-top: 2rem;
+    padding-bottom: 1.1rem;
+    position: absolute;
+    z-index: 3;
+    right: 0rem;
+    width: 100vw;
+    justify-content: flex-end;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    align-items: center;
+    /* blurred drop shadow with subtle warm glow */
+}
+.nav-title{
+    font-size: 10rem;
+    font-weight: 700;
+    margin-left: 3rem;
+    color: rgb(255, 102, 0);
+    z-index: 5;
+    margin-top: 9rem;
+    font-family: "Chiron Sung HK", serif;
+}
+
+.nav-title.is-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.6); /* Optional for readability */
+    padding: 1rem 3rem;
+    font-size: 6rem; /* Slightly smaller for fixed view */
+    transition: all 0.3s ease-in-out;
+}
+
+.under-title{
+    font-size: 2rem;
+    color: rgb(212, 211, 211);
+    display: block;
+    font-family: "Chiron Sung HK", serif;
+    f
+}
+.nav-a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    margin-right: 2rem;
+    z-index: 5;
+}
+.sect2{
+    margin-top: 5rem;
+    width: 90vw;
+    display: flex;
+    justify-self:center;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    flex-direction: row;
+    background-color: rgba(236, 177, 137, 0.304);
+    border-radius: 3%;
+}
+.thumbnail{
+    width: 23rem;
+    padding-left: 8rem;
+}
+.bold{
+    font-weight: 700;
+    font-size: 2rem;
+    display: block;
+}
+.about-book{
+    max-width: 40vw;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color:rgb(0, 0, 0);
+}
+.white{
+    color: white;
+}
+.rough{
+    z-index: 5;
+    margin-top: -4rem;
+}
+.rough-cont{
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+}
+
+@media (max-width: 768px){
+    .nav{
+        height:59rem;
+    }
+    .nav-title{
+        margin-left: 1.5rem;
+    }
+    .sect2{
+        flex-direction: column;
+    }
+    .about-book{
+        max-width: 80vw;
+    }
+    .thumbnail{
+        width: 80vw;
+        padding-left: 0rem;
+    }
+}
