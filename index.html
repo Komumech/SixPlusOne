@@ -46,7 +46,7 @@
                 <p class="about-book">
                     In this deeply personal and universally relatable book, Chisom Nwanoro shares essential lessons gleaned from her own crucible of life experience. She tackles the crushing weight of societal expectations, the power of vulnerability, and the path to finding strength in adversity.
                 </p>
-                <button class="button-class"><a href="https://selar.com/42ji6688q5">Purchase Book</a></button></a>
+                <button class="button-class"><a href="https://selar.com/42ji6688q5">Buy Now</a></button></a>
             </div>
         </section>
     </main>
@@ -95,6 +95,25 @@
             applyZoom();
         });
 
+        /**
+         * Intersection Observer for scroll-in animations
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.sect2, .rough-cont');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Optional: stop observing after animation
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            animatedElements.forEach(el => observer.observe(el));
+        });
 
 
         
