@@ -13,6 +13,7 @@ body {
     padding: 0px;
     margin: 0px;
     overflow-x: hidden;
+    --grey: rgba(113, 101, 93, 0.304);
     --sidebar-width-expanded: 440px;
     --sidebar-width-collapsed: 80px;
     --my-orange: rgb(255, 102, 0);
@@ -375,7 +376,7 @@ body {
     transition: all 0.3s ease-in-out;
 }
 .sect3{
-    background-color: rgba(113, 101, 93, 0.304);
+    background-color: var(--grey);
 }
 
 /* --- Horizontal Scroll Section --- */
