@@ -463,3 +463,9 @@ body {
     }
     /* ---------------------------------- */
 }
+
+@media (max-width: 668px){
+    .nav-title{
+        font-size: 7rem;
+    }
+}
