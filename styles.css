@@ -13,6 +13,7 @@ body {
     padding: 0px;
     margin: 0px;
     overflow-x: hidden;
+    --black: #181818;
     --grey: rgba(113, 101, 93, 0.304);
     --sidebar-width-expanded: 440px;
     --sidebar-width-collapsed: 80px;
@@ -210,7 +211,6 @@ body {
 .sect2{
     margin-top: 5rem;
     width: 90vw;
-
     display: flex;
     justify-self:center;
     justify-content: space-between;
@@ -218,7 +218,7 @@ body {
     padding-top: 2rem;
     padding-bottom: 7rem;
     flex-direction: row;
-    background-color: rgba(236, 177, 137, 0.304);
+    background-color: var(--grey);
     border-radius: 24px;
     /* The fade-in animation is now handled by the horizontal scroll container */
 }
@@ -290,7 +290,7 @@ body {
 }
 .button-class {
     /* --- Google Material Design Inspired Button --- */
-    background-color: rgb(0, 0, 0); /* Using the site's accent color */
+    background-color: #181818; /* Using the site's accent color */
     color: #fff;
     display: block;
     margin-top: 0.1rem ;
@@ -330,16 +330,16 @@ body {
 }
 
 .button-outline:hover {
-    background-color: black;
+    background-color: var(--black);
     color: #fff;
-    border: 2px solid black;
+    border: none;
 }
 
 .launch-button {
     position: fixed;
     top: 1.5rem;
     right: 1.5rem;
-    font-weight:
+    font-weight: 600;
     z-index: 998; /* Below sidebar and mobile toggle */
     display: inline-block; /* Override display:block from .button-class */
     margin-top: 0; /* Reset margin */
@@ -384,7 +384,7 @@ body {
     /* The container needs a defined height for pinning to work correctly. 
        The height will be managed by ScrollTrigger's pinSpacing. */
     /* height: 200vh; */
-    margin-bottom: -7rem;
+    margin-bottom: -2rem;
 }
 
 .horizontal-scroll-wrapper {
@@ -496,4 +496,31 @@ body {
     }
 
 
+}
+
+/* --- Footer --- */
+.site-footer {
+    background-color: #181818; /* A dark background consistent with the sidebar */
+    color: rgba(255, 255, 255, 0.6);
+    padding: 3rem 1.5rem;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    margin-top: 5rem; /* Add space above the footer */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content p {
+    margin: 0;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+}
+.footer-link{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
+}
+@media (max-width: 768px) {
+    .site-footer {
+        margin-top: 3rem;
+    }
 }
