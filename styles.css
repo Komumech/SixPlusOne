@@ -10,12 +10,13 @@
 }
 
 body {
-    height: 400vh;
+    height: 500vh;
     padding: 0px;
     margin: 0px;
     overflow-x: hidden;
     --sidebar-width-expanded: 440px;
     --sidebar-width-collapsed: 80px;
+    --my-orange: rgb(255, 102, 0);
     --sidebar-transition-speed: 0.4s;
     font-family: "Chiron Sung HK", serif;
     transition: padding-left var(--sidebar-transition-speed) ease;
@@ -109,7 +110,7 @@ body {
     width: 100%;
     background: none;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+    color: var(--my-orange);
     padding: 0.5rem;
     border-radius: 6px;
     cursor: pointer;
@@ -128,7 +129,7 @@ body {
 .nav{
     
     height: 30rem;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-content: center;
@@ -147,7 +148,7 @@ body {
 
 .video1{
     position: absolute;
-    width: 100vw;
+    width: 100%;
     height: 100%;
     filter: brightness(60%);
     object-fit: cover; /* ensure the video covers nav area without distortion */
@@ -235,7 +236,7 @@ body {
     margin-bottom: 1rem; /* Adds space below each paragraph */
 }
 .author-section {
-    margin-top: 5rem;
+    padding-left: 4rem;
     margin-bottom: 5rem;
     width: 90vw;
     display: flex;
@@ -352,7 +353,8 @@ body {
 #horizontal-scroll-container {
     /* The container needs a defined height for pinning to work correctly. 
        The height will be managed by ScrollTrigger's pinSpacing. */
-    /* height: 200vh; */ 
+    /* height: 200vh; */
+    margin-bottom: -7rem;
 }
 
 .horizontal-scroll-wrapper {
@@ -384,32 +386,22 @@ body {
     body{
         overflow-x: hidden;
     }
-    .main-content {
-        padding-top: 60px; /* Push content down to avoid overlap with fixed header */
-    }
-    .mobile-header {
-        display: flex;
-        align-items: center;
+    .mobile-menu-toggle{
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 60px;
-        background: rgba(18, 18, 18, 0.5);
-        backdrop-filter: blur(10px);
-        z-index: 998; /* Below the sidebar but above content */
-        padding: 0 1rem;
-        transition: transform 0.3s ease-in-out; /* For smooth hide/show */
-    }
-    .mobile-menu-toggle {
-        background-color: rgba(255, 255, 255, 0);
-        display: block; /* Show the hamburger button on mobile */
     }
     .nav{
         height:52rem;
         height: 52rem;
     }
-
+    .rough{
+        width: 100vw;
+        margin-top: -2rem;
+        margin-left: 2rem;
+    }
+    .rough-cont{
+        flex-direction: column;
+        align-items: center;
+    }
     .nav-title{
         font-size: 9rem;
     }
@@ -435,6 +427,7 @@ body {
         justify-self: center;
         flex-direction: column-reverse; /* Stack image on top of text */
         text-align: center;
+        padding-left: 0px;
     }
     .author-section > div:first-child {
         padding-left: 0;
