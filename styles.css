@@ -10,9 +10,15 @@
 }
 
 body {
+    height: 400vh;
     padding: 0px;
     margin: 0px;
     overflow-x: hidden;
+    --sidebar-width-expanded: 440px;
+    --sidebar-width-collapsed: 80px;
+    --sidebar-transition-speed: 0.4s;
+    font-family: "Chiron Sung HK", serif;
+    transition: padding-left var(--sidebar-transition-speed) ease;
     font-family: "Chiron Sung HK", serif;
 }
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -27,6 +33,98 @@ body {
     background-color:rgb(198, 196, 196);
 }
 
+/* --- Gemini-Inspired Sidebar --- */
+.sidebar-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--sidebar-width-expanded);
+    background: rgba(18, 18, 18, 0.194);
+    backdrop-filter: blur(10px);
+    box-shadow: rgba(18, 18, 18, 0.194) 0px 40px 55px 0px;
+    -webkit-backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+    transform: translateX(-100%);
+    transition: transform var(--sidebar-transition-speed) ease;
+    font-family: 'Roboto', sans-serif;
+}
+
+.sidebar-logo {
+    padding: 0 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.sidebar-logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.sidebar-links {
+    flex-grow: 1;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    gap: 1rem;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgb(255, 102, 0);
+}
+
+.link-icon {
+    font-size: 1.5rem;
+}
+
+.link-text {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.sidebar-toggle {
+    padding: 0 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.toggle-btn {
+    width: 100%;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background-color 0.2s ease, transform var(--sidebar-transition-speed) ease;
+}
+
+.sidebar-nav.sidebar-open {
+    transform: translateX(0);
+}
+
+.main-content {
+    /* Content is now always full width */
+    padding-left: 0;
+}
 .nav{
     
     height: 30rem;
@@ -54,25 +152,16 @@ body {
     filter: brightness(60%);
     object-fit: cover; /* ensure the video covers nav area without distortion */
     z-index: -1;
+    opacity: 0; /* Initially hide the video to show the poster */
+    transition: opacity 0.8s ease-in-out; /* Smooth fade-in transition */
 }
-.nav-links{
-    display: flex;
-    flex-direction: row;
-    justify-self: right;
-    font-size: 1.5rem;
-    padding-top: 2rem;
-    padding-bottom: 1.1rem;
-    position: absolute;
-    z-index: 3;
-    right: 0rem;
-    width: 100vw;
-    animation: fadeInDown 0.8s ease-out;
-    animation-fill-mode: both;
-    justify-content: flex-end;
-    backdrop-filter: blur(10px);
-    text-align: center;
-    align-items: center;
-    /* blurred drop shadow with subtle warm glow */
+
+.video1.is-loaded {
+    opacity: 1; /* Fade the video in when this class is added */
+} 
+.header {
+    /* This ensures the video header starts below the new fixed navbar */
+    padding-top: 60px; 
 }
 .nav-title{
     font-size: 10rem;
@@ -81,8 +170,8 @@ body {
     color: rgb(255, 102, 0);
     z-index: 5;
     margin-top: 9rem;
-    animation: fadeInDown 0.8s 0.2s ease-out; /* Added delay */
-    animation-fill-mode: both;
+    /* animation: fadeInDown 0.8s 0.2s ease-out; */ /* Replaced by GSAP animation */
+    /* animation-fill-mode: both; */
     font-family: "Chiron Sung HK", serif;
 }
 
@@ -102,33 +191,34 @@ body {
     font-size: 2rem;
     color: rgb(212, 211, 211);
     display: block;
+    padding: 0 1rem; /* Add padding for mobile */
     font-family: "Chiron Sung HK", serif;
 }
 .nav-a{
     text-decoration: none;
     color: rgb(255, 255, 255);
-    margin-right: 2rem;
+    transition: color 0.3s ease;
     z-index: 5;
 }
 .sect2{
     margin-top: 5rem;
     width: 90vw;
+
     display: flex;
     justify-self:center;
     justify-content: space-between;
     align-items: center;
     padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 7rem;
     flex-direction: row;
     background-color: rgba(236, 177, 137, 0.304);
-    border-radius: 3%;
-    opacity: 0; /* Initially hidden for scroll animation */
-    transform: translateY(30px); /* Initial position for scroll animation */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    border-radius: 24px;
+    /* The fade-in animation is now handled by the horizontal scroll container */
 }
 .thumbnail{
     width: 23rem;
     padding-left: 8rem;
+    
 }
 .bold{
     font-weight: 700;
@@ -143,6 +233,38 @@ body {
     font-family: "Chiron Sung HK", serif;
     line-height: 1.7; /* Increases space between lines for readability */
     margin-bottom: 1rem; /* Adds space below each paragraph */
+}
+.author-section {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    opacity: 0; /* Initially hidden for scroll animation */
+    transform: translateY(30px); /* Initial position for scroll animation */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.author-image {
+    width: 23rem;
+    padding-right: 8rem;
+    border-radius: 50%;
+}
+
+.about-author {
+    max-width: 40vw;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    font-family: "Chiron Sung HK", serif;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+} 
+
+.author-section > div:first-child {
+    padding-left: 8rem;
 }
 .white{
     color: white;
@@ -161,10 +283,10 @@ body {
 }
 .button-class {
     /* --- Google Material Design Inspired Button --- */
-    background-color: rgb(255, 102, 0); /* Using the site's accent color */
+    background-color: rgb(0, 0, 0); /* Using the site's accent color */
     color: #fff;
     display: block;
-    margin-top: 1rem ;
+    margin-top: 0.1rem ;
     font-family: 'Roboto', sans-serif; /* Using the imported sans-serif font */
     font-size: 0.9rem;
     font-weight: 500;
@@ -184,7 +306,7 @@ body {
 }
 
 .button-class:hover {
-    background-color: black; /* A slightly darker orange for hover */
+    background-color: rgb(255, 102, 0); /* A slightly darker orange for hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
@@ -197,16 +319,101 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* --- Menu Toggle Button (Hamburger) --- */
+.mobile-menu-toggle {
+    display: none; /* Hidden by default, shown in media query */
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #fff;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+}
+.mobile-header {
+    display: none; /* Hidden by default, shown in media query */
+}
+
+.sect3{
+    background-color: rgba(113, 101, 93, 0.304);
+}
+
+/* --- Horizontal Scroll Section --- */
+#horizontal-scroll-container {
+    /* The container needs a defined height for pinning to work correctly. 
+       The height will be managed by ScrollTrigger's pinSpacing. */
+    /* height: 200vh; */ 
+}
+
+.horizontal-scroll-wrapper {
+    /* This will be the element that gets pinned */
+    position: relative;
+    height: 100vh;
+    overflow: hidden; /* Hide elements animating outside the viewport */
+    /* Resetting styles as JS animation is removed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem; /* Add space between the sections */
+}
+
+.horizontal-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Panels will now flow naturally in the document */
+}
+/* ---------------------------------- */
+
 @media (max-width: 768px){
     body{
         overflow-x: hidden;
     }
+    .main-content {
+        padding-top: 60px; /* Push content down to avoid overlap with fixed header */
+    }
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background: rgba(18, 18, 18, 0.5);
+        backdrop-filter: blur(10px);
+        z-index: 998; /* Below the sidebar but above content */
+        padding: 0 1rem;
+        transition: transform 0.3s ease-in-out; /* For smooth hide/show */
+    }
+    .mobile-menu-toggle {
+        display: block; /* Show the hamburger button on mobile */
+    }
     .nav{
         height:52rem;
     }
+
     .nav-title{
-        margin-left: 1.5rem;
+        margin-top: 5rem;
     }
+    .mobile-header--hidden {
+        transform: translateY(-100%); /* Slide header up and out of view */
+    }
+
     .sect2{
         flex-direction: column;
     }
@@ -217,4 +424,41 @@ body {
         width: 80vw;
         padding-left: 0rem;
     }
+    .author-section {
+        justify-self: center;
+        flex-direction: column-reverse; /* Stack image on top of text */
+        text-align: center;
+    }
+    .author-section > div:first-child {
+        padding-left: 0;
+    }
+    .about-author {
+        max-width: 85vw;
+    }
+    .author-image {
+        width: 75vw; /* Make author image slightly smaller than book */
+        padding-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    /* Apply animation ONLY to the sections that need it on mobile */
+    .horizontal-panel .sect2 {
+        opacity: 1;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    /* Adjust horizontal scroll for mobile */
+    .horizontal-scroll-wrapper {
+        width: 100%;
+        height: auto; /* Let height be determined by content */
+        position: static; /* Reset position for normal flow */
+    }
+    .horizontal-panel {
+        position: static; /* Reset position for normal flow */
+        height: auto; /* Let height be determined by content */
+        width: 100%;
+        margin-bottom: -3rem; /* Add some space between the sections on mobile */
+    }
+    /* ---------------------------------- */
 }

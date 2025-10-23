@@ -6,55 +6,218 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chiron+Sung+HK:ital,wght@0,200..900;1,200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Telugu:wght@100..900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Six Plus One</title>
 </head>
 <body>
-    <header>
-        <nav class="nav-links">
-            <a href="index.html" class="nav-a">Home</a>
-            <a href="about.html" class="nav-a">About</a>
-            <a href="contact.html" class="nav-a">Contact</a>
-        </nav>
-        <div class="nav">
-            <video src="https://dailycrumb.netlify.app/vid1(sixplusone).mp4" class="video1" id="zoomVideo" autoplay loop muted></video>
-            <h1 class="nav-title">
-                <span class="white">Six Plus</span> One
+    <aside class="sidebar-nav">
+        <div class="sidebar-logo">
+            <a href="index.html">Six Plus One</a>
+        </div>
+        <div class="sidebar-links">
+            <a href="index.html" class="sidebar-link"><span class="link-icon"></span><span class="link-text">Home</span></a>
+            <a href="#about-book-section" class="sidebar-link"><span class="link-icon"></span><span class="link-text">About</span></a>
+            <a href="contact.html" class="sidebar-link"><span class="link-icon"></span><span class="link-text">Contact</span></a>
+        </div>
+        <div class="sidebar-toggle">
+            <button id="sidebar-toggle-btn" class="toggle-btn">«</button>
+        </div>
+    </aside>
+
+    <div class="main-content">
+        <div class="mobile-header">
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle-btn">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <header>
+            <div class="nav">
+                <video src="https://dailycrumb.netlify.app/vid1(sixplusone).mp4" class="video1" id="zoomVideo" autoplay loop muted poster="image.png"></video>
+                <h1 class="nav-title">
+                <span class="white">Six Plus</span> <span class="nav-title-word-one">One</span>
                 <br>
                 <span class="under-title">Lessons From The Eyes Of The Storm</span>
             </h1>
     
         </div>
     </header>
-
-    <main>
-        <div class="rough-cont">
-            <img src="rough.png" alt="" class="rough">
-            <img src="rough.png" alt="" class="rough">
-            <img src="rough.png" alt="" class="rough">
-        </div>
-
-        <section class="sect2">
-            <div>
-                <img src="Thumbnail.jpg" alt="The book cover for Six Plus One" class="thumbnail">
+    
+        <main>
+            <div class="rough-cont">
+                <img src="rough.png" alt="" class="rough">
+                <img src="rough.png" alt="" class="rough">
+                <img src="rough.png" alt="" class="rough">
             </div>
-            <div>
-                <h2 class="bold">About The Book</h2>
-                <p class="about-book">
-                    Life often throws storms we never prayed for. These could be loss, failure, betrayal, or any trial that shakes the very foundation of who we are. In <strong>Six Plus One: Lessons from the Eye of the Storm</strong>, author Chisom Nwanoro offers a profoundly insightful guide to navigating these moments.
-                </p>
-                <p class="about-book">
-                    In this deeply personal and universally relatable book, Chisom Nwanoro shares essential lessons gleaned from her own crucible of life experience. She tackles the crushing weight of societal expectations, the power of vulnerability, and the path to finding strength in adversity.
-                </p>
-                <button class="button-class"><a href="https://selar.com/42ji6688q5">Buy Now</a></button></a>
+
+            <section class="author-section">
+                <div>
+                    <h2 class="bold">About The Author</h2>
+                    <p class="about-author">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde nam, perferendis sunt aperiam consequuntur iste? Dolore nemo rerum, tenetur omnis corporis ab nulla nam ipsa pariatur labore, enim earum similique!
+                    </p>
+                    <p class="about-author">
+                        When not writing, she enjoys connecting with readers and exploring new ways to share stories of hope and transformation.
+                    </p>
+                </div>
+                <div>
+                    <img src="profile img.jpg" alt="Chisom Nwanoro, author of Six Plus One" class="author-image">
+                </div>
+            </section>
+
+            <div id="horizontal-scroll-container">
+                <div class="horizontal-scroll-wrapper">
+                    <section class="horizontal-panel">
+                        <div class="sect2" id="about-book-section">
+                             <div>
+                                <img src="Thumbnail.jpg" alt="The book cover for Six Plus One" class="thumbnail">
+                            </div>
+                            <div>
+                                <h2 class="bold">About The Book</h2>
+                                <p class="about-book">
+                                    Life often throws storms we never prayed for. These could be loss, failure, betrayal, or any trial that shakes the very foundation of who we are. In <strong>Six Plus One: Lessons from the Eye of the Storm</strong>, author Chisom Nwanoro offers a profoundly insightful guide to navigating these moments.
+                                </p>
+                                <p class="about-book">
+                                    In this deeply personal and universally relatable book, Chisom Nwanoro shares essential lessons gleaned from her own crucible of life experience. She tackles the crushing weight of societal expectations, the power of vulnerability, and the path to finding strength in adversity.
+                                </p>
+                                <button class="button-class"><a href="https://selar.com/42ji6688q5">Buy Now</a></button>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="horizontal-panel">
+                        <div class="sect3 sect2" id="project-r4k-section">
+                            <div>
+                                <img src="Thumbnail.jpg" alt="The book cover for Six Plus One" class="thumbnail">
+                            </div>
+                            <div>
+                                <h2 class="bold">Project R4K</h2>
+                                <p class="about-book">
+                                    Life often throws storms we never prayed for. These could be loss, failure, betrayal, or any trial that shakes the very foundation of who we are. In <strong>Six Plus One: Lessons from the Eye of the Storm</strong>, author Chisom Nwanoro offers a profoundly insightful guide to navigating these moments.
+                                </p>
+                                <p class="about-book">
+                                    In this deeply personal and universally relatable book, Chisom Nwanoro shares essential lessons gleaned from her own crucible of life experience. She tackles the crushing weight of societal expectations, the power of vulnerability, and the path to finding strength in adversity.
+                                </p>
+                                <button class="button-class"><a href="https://selar.com/42ji6688q5">Buy Now</a></button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </div>
-        </section>
-    </main>
+        </main>
+    </div>
 </body>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Register the ScrollTrigger plugin with GSAP
+            gsap.registerPlugin(ScrollTrigger);
+
             const video = document.getElementById('zoomVideo');
+ 
+            // --- Sidebar Toggle Logic ---
+            const sidebar = document.querySelector('.sidebar-nav');
+            const desktopToggleBtn = document.getElementById('sidebar-toggle-btn');
+            const mobileToggleBtn = document.getElementById('mobile-menu-toggle-btn');
+            
+            // The hamburger button opens the sidebar
+            mobileToggleBtn.addEventListener('click', () => sidebar.classList.add('sidebar-open'));
+
+            // The button inside the sidebar closes it
+            desktopToggleBtn.addEventListener('click', () => sidebar.classList.remove('sidebar-open'));
+            // --------------------------
+
+            // --- Close sidebar on outside click ---
+            document.addEventListener('click', (event) => {
+                // Check if the sidebar is open
+                if (sidebar.classList.contains('sidebar-open')) {
+                    // If the click target is NOT the sidebar itself AND NOT the mobile toggle button
+                    if (!sidebar.contains(event.target) && !mobileToggleBtn.contains(event.target)) {
+                        sidebar.classList.remove('sidebar-open');
+                    }
+                }
+            });
+
+            // --- Intersection Observer for Animations ---
+            // We exclude elements within the horizontal scroll container, as GSAP handles them.
+            const animatedElements = document.querySelectorAll('.rough-cont, .author-section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+            animatedElements.forEach(el => observer.observe(el));
+
+            // --- Mobile Header Hide/Show on Scroll ---
+            let lastScrollY = window.scrollY;
+            const mobileHeader = document.querySelector('.mobile-header');
+
+            const handleMobileHeaderScroll = () => {
+                if (window.matchMedia("(max-width: 768px)").matches) {
+                    const currentScrollY = window.scrollY;
+                    if (currentScrollY > lastScrollY && currentScrollY > 60) {
+                        // Scrolling Down
+                        mobileHeader.classList.add('mobile-header--hidden');
+                    } else {
+                        // Scrolling Up
+                        mobileHeader.classList.remove('mobile-header--hidden');
+                    }
+                    lastScrollY = currentScrollY;
+                }
+            };
+
+            window.addEventListener('scroll', handleMobileHeaderScroll);
+            // -----------------------------------------
+
+            // --- GSAP Horizontal Scroll ---
+            // Only run this on screens wider than 768px
+            if (window.matchMedia("(min-width: 769px)").matches) { // --- DESKTOP ANIMATION ---
+                const wrapper = document.querySelector(".horizontal-scroll-wrapper");
+                const panels = gsap.utils.toArray(".horizontal-panel");
+
+                // Set initial state for the second panel (hidden below)
+                gsap.set(panels[1], { x: "100%" }); // Position off-screen to the right
+
+                // Create the timeline
+                let tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: wrapper, // Now the wrapper is the trigger
+                        pin: true, // Pin the trigger element itself
+                        start: "top top", // Start when the top of the trigger hits the top of the viewport
+                        scrub: 1, // Smooth scrubbing
+                        markers: false,
+                        // End after scrolling a distance equal to the height of one panel
+                        end: "bottom top", // End when the bottom of the trigger hits the top of the viewport
+                        invalidateOnRefresh: true // This ensures the animation resets correctly
+                    }
+                });
+
+                // Animate the first panel out and the second panel in
+                tl.to(panels[0], { x: "-100%", ease: "none" }, 0) // First panel slides left
+                  .to(panels[1], { x: "0%", ease: "none" }, 0);    // Second panel slides in from right
+            } else { // --- MOBILE (ANDROID) ANIMATION ---
+                // On mobile, use the Intersection Observer for a simple fade-in
+                // We target the .sect2 elements inside the panels for the animation
+                document.querySelectorAll('.horizontal-panel .sect2').forEach(section => observer.observe(section));
+            }
+
+            // Refresh ScrollTrigger on window load to ensure all calculations are correct
+            window.addEventListener('load', () => {
+                ScrollTrigger.refresh();
+            });
+
+            // --- Video Fade-in Logic ---
+            video.addEventListener('canplaythrough', () => {
+                video.classList.add('is-loaded');
+            });
+            // ---------------------------
             
             // --- Configuration Variables ---
             const MAX_SCALE = 1.8; // Max zoom level
@@ -95,27 +258,5 @@
             applyZoom();
         });
 
-        /**
-         * Intersection Observer for scroll-in animations
-         */
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.sect2, .rough-cont');
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Optional: stop observing after animation
-                    }
-                });
-            }, {
-                threshold: 0.1 // Trigger when 10% of the element is visible
-            });
-
-            animatedElements.forEach(el => observer.observe(el));
-        });
-
-
-        
     </script>
 </html>
