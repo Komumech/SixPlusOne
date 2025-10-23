@@ -392,7 +392,7 @@ body {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
+        width: 100vw;
         height: 60px;
         background: rgba(18, 18, 18, 0.5);
         backdrop-filter: blur(10px);
@@ -465,7 +465,7 @@ body {
     /* ---------------------------------- */
 }
 
-@media (max-width: 468px){
+@media (min-width: 468px){
     .nav-title{
         font-size: 6rem;
         margin-top: 1rem;
