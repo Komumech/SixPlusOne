@@ -409,6 +409,7 @@ body {
 
     .nav-title{
         margin-top: 5rem;
+        margin-left: 1rem;
     }
     .mobile-header--hidden {
         transform: translateY(-100%); /* Slide header up and out of view */
