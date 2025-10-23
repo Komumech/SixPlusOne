@@ -9,7 +9,7 @@
     }
 }
 
-body {
+body { 
     padding: 0px;
     margin: 0px;
     overflow-x: hidden;
@@ -175,6 +175,12 @@ body {
     font-family: "Chiron Sung HK", serif;
 }
 
+.title-line {
+    display: inline-block; /* Allows transform and clipping */
+    overflow: hidden;      /* Hides the text before it slides in */
+    vertical-align: bottom;/* Ensures proper alignment */
+}
+
 .nav-title.is-fixed {
     position: fixed;
     top: 0;
@@ -314,6 +320,30 @@ body {
     background-color: #000000; /* An even darker orange for the active/click state */
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
+
+.button-outline {
+    background-color: transparent;
+    border: 2px solid var(--my-orange);
+    color: var(--my-orange);
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.button-outline:hover {
+    background-color: black;
+    color: #fff;
+    border: 2px solid black;
+}
+
+.launch-button {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-weight:
+    z-index: 998; /* Below sidebar and mobile toggle */
+    display: inline-block; /* Override display:block from .button-class */
+    margin-top: 0; /* Reset margin */
+}
+
 
 .is-visible {
     opacity: 1;
@@ -460,4 +490,9 @@ body {
         margin-bottom: -3rem; /* Add some space between the sections on mobile */
     }
     /* ---------------------------------- */
+    .launch-button {
+         /* Hide the launch button on mobile to save space */
+    }
+
+
 }
