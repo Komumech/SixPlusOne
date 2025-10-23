@@ -322,13 +322,18 @@ body {
 
 /* --- Menu Toggle Button (Hamburger) --- */
 .mobile-menu-toggle {
-    display: none; /* Hidden by default, shown in media query */
+    display: block; /* Always visible */
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 999; /* Below the sidebar */
     width: 44px;
     height: 44px;
-    background: none;
-    border: none;
+    background: rgba(30, 30, 30, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     cursor: pointer;
+    backdrop-filter: blur(5px);
 }
 
 .mobile-menu-toggle span {
@@ -339,10 +344,6 @@ body {
     margin: 5px auto;
     transition: all 0.3s ease-in-out;
 }
-.mobile-header {
-    display: none; /* Hidden by default, shown in media query */
-}
-
 .sect3{
     background-color: rgba(113, 101, 93, 0.304);
 }
@@ -401,14 +402,18 @@ body {
         transition: transform 0.3s ease-in-out; /* For smooth hide/show */
     }
     .mobile-menu-toggle {
+        background-color: rgba(255, 255, 255, 0);
         display: block; /* Show the hamburger button on mobile */
     }
     .nav{
         height:52rem;
+        height: 52rem;
     }
 
     .nav-title{
         font-size: 9rem;
+    }
+    .nav-title {
         margin-top: 1rem;
         margin-left: 1rem;
     }
@@ -463,11 +468,4 @@ body {
         margin-bottom: -3rem; /* Add some space between the sections on mobile */
     }
     /* ---------------------------------- */
-}
-
-@media (min-width: 468px){
-    .nav-title{
-        font-size: 6rem;
-        margin-top: 1rem;
-    }
 }
