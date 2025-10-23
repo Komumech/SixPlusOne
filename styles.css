@@ -464,7 +464,7 @@ body {
     /* ---------------------------------- */
 }
 
-@media (max-width: 468px){
+@media (min-width: 468px){
     .nav-title{
         font-size: 6rem;
         margin-top: 1rem;
