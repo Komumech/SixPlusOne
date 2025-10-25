@@ -450,7 +450,7 @@ body::-webkit-scrollbar-thumb {
     /* The container needs a defined height for pinning to work correctly. 
        The height will be managed by ScrollTrigger's pinSpacing. */
     /* height: 200vh; */
-    margin-bottom: -2rem;
+    margin-bottom: 4rem;
 }
 
 .horizontal-scroll-wrapper {
@@ -469,7 +469,6 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Panels will now flow naturally in the document */
 }
 /* ---------------------------------- */
 

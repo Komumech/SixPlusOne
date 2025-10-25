@@ -10,8 +10,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Six Plus One</title>
-    <!-- Set the browser address bar color on mobile -->
-    <meta name="theme-color" content="#181818">
         <link rel="icon" href="/favicon.jpg" type="image/x-icon">
 </head>
 <body>
@@ -310,31 +308,29 @@
                 });
 
                 // 1. Prepare the text for animation
-                // This sets the initial state for the "drawing" effect.
-                gsap.set(words, {
-                    strokeDasharray: (i) => words[i].getTotalLength(),
-                    strokeDashoffset: (i) => words[i].getTotalLength(),
-                    autoAlpha: 1 // Make sure the text is visible before animating
+                words.forEach(word => {
+                    gsap.set(word, { autoAlpha: 1 }); // Make sure the word is visible
+                    const length = word.getTotalLength(); // Now measure the length
+                    gsap.set(word, { strokeDasharray: length, strokeDashoffset: length }); // Set up for animation
                 });
 
-                // 2. Animate the "writing" of the text
-                preloaderTimeline.to(words, {
-                    delay: 0.2, // Shorten the initial delay
+                // 2. Animate the "writing" and "filling" of the text
+                preloaderTimeline.fromTo(words, { strokeDashoffset: (i) => words[i].getTotalLength() }, {
                     strokeDashoffset: 0,
-                    duration: 1.0, // Make the drawing animation faster
-                    stagger: 0.2,
+                    duration: 2,
+                    stagger: 0.3,
                     ease: "power1.inOut"
-                }).to(words, { // 3. Animate the "filling" of the text
+                }).to(words, {
                     fill: (i) => words[i].classList.contains('preloader-text-accent') ? 'var(--my-orange)' : '#181818',
-                    duration: 0.6
-                }, "-=0.7"); // Adjust the fill animation overlap
+                    duration: 1
+                }, "-=1.5"); // Start filling before the drawing is fully complete for a nice overlap
 
-                // 4. Fade out the entire preloader
+                // 3. Fade out the entire preloader
                 preloaderTimeline.to(preloader, {
                     opacity: 0,
-                    duration: 0.5, // Make the fade-out faster
+                    duration: 1,
                     ease: "power1.inOut"
-                }, "+=0.2"); // Shorten the pause after the text is filled
+                }, "+=0.5"); // Add a half-second pause after the text is filled
 
                 ScrollTrigger.refresh();
             });
