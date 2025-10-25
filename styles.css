@@ -1,3 +1,42 @@
+/* --- Slick Preloader --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; /* White background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#preloader.preloader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#preloader-svg {
+    width: 80%;
+    max-width: 600px;
+}
+
+.preloader-text {
+    font-family: "Great Vibes", cursive;
+    font-size: 120px; /* Cursive fonts can be smaller, so we increase the size a bit */
+    font-weight: 400; /* Use the font's normal weight */
+    stroke: #181818; /* The color of the "pen" */
+    stroke-width: 0.7; /* A thinner stroke for a more delicate feel */
+    fill: transparent; /* The text is transparent before being filled */
+    visibility: visible; /* Ensure text is visible for GSAP to measure */
+}
+
+.preloader-text-accent {
+    /* The word "One" will be drawn and filled with the theme's orange color */
+    stroke: var(--my-orange);
+}
+
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -7,6 +46,10 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+body.loading {
+    overflow: hidden;
 }
 
 body { 
@@ -415,11 +458,6 @@ body::-webkit-scrollbar-thumb {
     position: relative;
     height: 100vh;
     overflow: hidden; /* Hide elements animating outside the viewport */
-    /* Resetting styles as JS animation is removed */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem; /* Add space between the sections */
 }
 
 .horizontal-panel {

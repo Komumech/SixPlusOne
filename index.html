@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chiron+Sung+HK:ital,wght@0,200..900;1,200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Telugu:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chiron+Sung+HK:ital,wght@0,200..900;1,200..900&family=Great+Vibes&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Telugu:wght@100..900&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,17 @@
         <link rel="icon" href="/favicon.jpg" type="image/x-icon">
 </head>
 <body>
+    <!-- Slick Preloader -->
+    <div id="preloader">
+        <svg id="preloader-svg" viewbox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- The text paths will be animated -->
+            <text class="preloader-text" id="text-six" x="25%" y="50%" dy=".35em" text-anchor="middle">Six</text>
+            <text class="preloader-text" id="text-plus" x="50%" y="50%" dy=".35em" text-anchor="middle">Plus</text>
+            <text class="preloader-text preloader-text-accent" id="text-one" x="75%" y="50%" dy=".35em" text-anchor="middle">One</text>
+        </svg>
+    </div>
+    <!-- End Preloader -->
+
     <aside class="sidebar-nav">
         <div class="sidebar-logo">
             <a href="index.html">Six Plus One</a>
@@ -39,10 +50,15 @@
                 <video src="https://dailycrumb.netlify.app/vid1(sixplusone).mp4" class="video1" id="zoomVideo" autoplay loop muted poster="image.png"></video>
                 <a href="#" class="button-class button-outline launch-button">Join the Booklaunch</a>
                 <h1 class="nav-title">
-                <span class="white">Six Plus</span> <span class="nav-title-word-one">One</span>
-                <br>
-                <span class="under-title">Lessons From The Eyes Of The Storm</span>
-            </h1>
+                    <span class="title-line">
+                        <span class="white">Six Plus</span>
+                    </span>
+                    <span class="title-line">
+                        <span class="nav-title-word-one">One</span>
+                    </span>
+                    <br>
+                    <span class="under-title">Lessons From The Eyes Of The Storm</span>
+                </h1>
     
         </div>
     </header>
@@ -132,6 +148,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Register the ScrollTrigger plugin with GSAP
             gsap.registerPlugin(ScrollTrigger);
+
+            // Add loading class to body to prevent scrolling while preloader is visible
+            document.body.classList.add('loading');
 
             // --- Purchase Modal Logic ---
             const buyNowBtn = document.getElementById('buy-now-btn');
@@ -271,7 +290,49 @@
             }
 
             // Refresh ScrollTrigger on window load to ensure all calculations are correct
+            // CONSOLIDATED 'load' EVENT
             window.addEventListener('load', () => {
+                // --- GSAP Preloader Animation ---
+                // This robust approach runs after all page assets are loaded.
+                const preloader = document.getElementById('preloader');
+                const body = document.body;
+                const words = gsap.utils.toArray('.preloader-text');
+
+                // A simple, robust timeline for the preloader
+                const preloaderTimeline = gsap.timeline({
+                    // This function runs once the entire animation sequence is complete
+                    onComplete: () => {
+                        preloader.style.display = 'none';
+                        body.classList.remove('loading');
+                    }
+                });
+
+                // 1. Prepare the text for animation
+                // This sets the initial state for the "drawing" effect.
+                gsap.set(words, {
+                    strokeDasharray: (i) => words[i].getTotalLength(),
+                    strokeDashoffset: (i) => words[i].getTotalLength(),
+                    autoAlpha: 1 // Make sure the text is visible before animating
+                });
+
+                // 2. Animate the "writing" of the text
+                preloaderTimeline.to(words, {
+                    strokeDashoffset: 0,
+                    duration: 2,
+                    stagger: 0.5, // Increase stagger for a more deliberate, beautiful effect
+                    ease: "power1.inOut"
+                }).to(words, { // 3. Animate the "filling" of the text
+                    fill: (i) => words[i].classList.contains('preloader-text-accent') ? 'var(--my-orange)' : '#181818',
+                    duration: 1
+                }, "-=1.5"); // Start filling before the drawing is fully complete for a nice overlap
+
+                // 4. Fade out the entire preloader
+                preloaderTimeline.to(preloader, {
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power1.inOut"
+                }, "+=0.5"); // Add a half-second pause after the text is filled
+
                 ScrollTrigger.refresh();
             });
 
