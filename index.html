@@ -31,7 +31,7 @@
         <div class="sidebar-links">
             <a href="index.html" class="sidebar-link"><span class="link-icon"></span><span class="link-text">Home</span></a>
             <a href="#about-book-section" class="sidebar-link"><span class="link-icon"></span><span class="link-text">About</span></a>
-            <a href="contact.html" class="sidebar-link"><span class="link-icon"></span><span class="link-text">Join The Booklaunch</span></a>
+            <a href="#" id="contact-btn-sidebar" class="sidebar-link"><span class="link-icon"></span><span class="link-text">Contact</span></a>
         </div>
         <div class="sidebar-toggle">
             <button id="sidebar-toggle-btn" class="toggle-btn">«</button>
@@ -48,7 +48,7 @@
             
             <div class="nav">
                 <video src="https://dailycrumb.netlify.app/vid1(sixplusone).mp4" class="video1" id="zoomVideo" autoplay loop muted poster="image.png"></video>
-                <a href="#" class="button-class button-outline launch-button">Join the Booklaunch</a>
+                <a href="https://paystack.com/buy/six-plus-one" target="_blank" rel="noopener noreferrer" class="button-class button-outline launch-button">Join the Booklaunch</a>
                 <h1 class="nav-title">
                     <span class="title-line">
                         <span class="white">Six Plus</span>
@@ -128,6 +128,8 @@
             </div>
         </main>
 
+        <!-- Contact Section -->
+
         <!-- Purchase Options Modal -->
         <div class="modal-overlay" id="buy-modal-overlay">
             <div class="modal-content">
@@ -138,6 +140,30 @@
                     <!-- NOTE: The first link is from your original button. -->
                     <a href="https://selar.com/42ji6688q5" target="_blank" rel="noopener noreferrer" class="button-class modal-button">Soft Copy</a>
                     <a href="https://paystack.com/buy/six-plus-one" target="_blank" rel="noopener noreferrer" class="button-class button-outline modal-button">Hard Copy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Modal -->
+        <div class="modal-overlay" id="contact-modal-overlay">
+            <div class="modal-content">
+                <button class="modal-close-btn" id="contact-modal-close-btn">&times;</button>
+                <h3 class="modal-title">Connect With Chisom</h3>
+                <p class="modal-text">Find her on the following platforms:</p>
+                <div class="modal-buttons">
+                    <!-- Replace # with actual links -->
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="button-class modal-button icon-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10C2.5 4.24 4.24 2.5 7 2.5h10c2.76 0 4.5 1.74 4.5 4.5v10c0 2.76-1.74 4.5-4.5 4.5H7c-2.76 0-4.5-1.74-4.5-4.5Z"/><path d="m10 15 5-3-5-3z"/></svg>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="button-class modal-button icon-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="button-class modal-button icon-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        <span>Facebook</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -202,6 +228,56 @@
                 });
             }
             // --------------------------
+
+            // --- Contact Modal Logic ---
+            const contactBtnSidebar = document.getElementById('contact-btn-sidebar');
+            const contactModalOverlay = document.getElementById('contact-modal-overlay');
+            const contactModalCloseBtn = document.getElementById('contact-modal-close-btn');
+
+            const openContactModal = () => contactModalOverlay.classList.add('is-visible');
+            const closeContactModal = () => contactModalOverlay.classList.remove('is-visible');
+            if (contactBtnSidebar) { // Targets the link in the sidebar
+                contactBtnSidebar.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default link behavior
+                    sidebar.classList.remove('sidebar-open'); // Close the sidebar
+                    // Use a timeout to let the sidebar close animation start
+                    setTimeout(openContactModal, 200); 
+                });
+            }
+            if (contactModalCloseBtn) {
+                contactModalCloseBtn.addEventListener('click', closeContactModal);
+            }
+            if (contactModalOverlay) {
+                contactModalOverlay.addEventListener('click', (event) => {
+                    if (event.target === contactModalOverlay) closeContactModal();
+                });
+            }
+            // ---------------------------
+
+            // --- Smooth Scroll for Sidebar Links ---
+            const sidebarLinks = document.querySelectorAll('.sidebar-links a[href^="#"]');
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent the default jump
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    // Close the sidebar when a link is clicked
+                    sidebar.classList.remove('sidebar-open');
+
+                    if (targetElement) {
+                        // Use a small timeout to allow the sidebar to start closing before scrolling
+                        setTimeout(() => {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }, 200);
+                    }
+                });
+            });
 
             // --- Enhanced Title Animation on Load ---
             const titleElements = gsap.utils.toArray(".title-line > *");
