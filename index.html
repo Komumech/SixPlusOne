@@ -81,7 +81,7 @@
                                 <p class="about-book">
                                     In this deeply personal and universally relatable book, Chisom Nwanoro shares essential lessons gleaned from her own crucible of life experience. She tackles the crushing weight of societal expectations, the power of vulnerability, and the path to finding strength in adversity.
                                 </p>
-                                <button class="button-class"><a href="https://selar.com/42ji6688q5">Buy Now</a></button>
+                                <button class="button-class" id="buy-now-btn">Buy Now</button>
                             </div>
                         </div>
                     </section>
@@ -106,6 +106,20 @@
             </div>
         </main>
 
+        <!-- Purchase Options Modal -->
+        <div class="modal-overlay" id="buy-modal-overlay">
+            <div class="modal-content">
+                <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+                <h3 class="modal-title">Choose Your Version</h3>
+                <p class="modal-text">Select the format you would like to purchase.</p>
+                <div class="modal-buttons">
+                    <!-- NOTE: The first link is from your original button. -->
+                    <a href="https://selar.com/42ji6688q5" target="_blank" rel="noopener noreferrer" class="button-class modal-button">Soft Copy</a>
+                    <a href="https://paystack.shop/pay/zlx826xg37" target="_blank" rel="noopener noreferrer" class="button-class button-outline modal-button">Hard Copy</a>
+                </div>
+            </div>
+        </div>
+
         <footer class="site-footer">
             <div class="footer-content">
                 <p>Powered By: <a href="https://github.com/Komumech" target="_blank" rel="noopener noreferrer" class="footer-link">Komu Mech</a></p>
@@ -113,12 +127,32 @@
             </div>
         </footer>
     </div>
-</body>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Register the ScrollTrigger plugin with GSAP
             gsap.registerPlugin(ScrollTrigger);
+
+            // --- Purchase Modal Logic ---
+            const buyNowBtn = document.getElementById('buy-now-btn');
+            const modalOverlay = document.getElementById('buy-modal-overlay');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+
+            const openModal = () => modalOverlay.classList.add('is-visible');
+            const closeModal = () => modalOverlay.classList.remove('is-visible');
+
+            if (buyNowBtn) {
+                buyNowBtn.addEventListener('click', openModal);
+            }
+            if (modalCloseBtn) {
+                modalCloseBtn.addEventListener('click', closeModal);
+            }
+            if (modalOverlay) {
+                modalOverlay.addEventListener('click', (event) => {
+                    if (event.target === modalOverlay) closeModal();
+                });
+            }
+            // --------------------------
 
             // --- Enhanced Title Animation on Load ---
             const titleElements = gsap.utils.toArray(".title-line > *");
@@ -293,4 +327,5 @@
         });
 
     </script>
+</body>
 </html>
