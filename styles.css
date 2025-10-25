@@ -282,7 +282,7 @@ body::-webkit-scrollbar-thumb {
     justify-content: space-between;
     align-items: center;
     padding-top: 2rem;
-    padding-bottom: 7rem;
+    padding-bottom: 9rem;
     flex-direction: row;
     background-color: var(--grey);
     border-radius: 24px;
@@ -291,6 +291,8 @@ body::-webkit-scrollbar-thumb {
 .thumbnail{
     width: 23rem;
     padding-left: 8rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     
 }
 .bold{
@@ -307,6 +309,12 @@ body::-webkit-scrollbar-thumb {
     line-height: 1.7; /* Increases space between lines for readability */
     margin-bottom: 1rem; /* Adds space below each paragraph */
 }
+.about-book--project {
+    font-size: 1.1rem; /* Slightly smaller font for this specific section */
+    line-height: 1.6;
+    padding-top: 1rem;
+}
+
 .author-section {
     padding-left: 4rem;
     margin-bottom: 5rem;
@@ -661,4 +669,30 @@ body::-webkit-scrollbar-thumb {
     .site-footer {
         margin-top: 3rem;
     }
+}
+
+/* --- Read More Functionality --- */
+.read-more-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.read-more-content.is-expanded {
+    max-height: 1000px; /* Increased height to ensure all content is visible */
+    opacity: 1;
+}
+
+.read-more-btn {
+    background: none;
+    border: none;
+    color: var(--my-orange);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.2rem 0;
+    letter-spacing: 0.08em;
+    transition: color 0.2s ease;
 }

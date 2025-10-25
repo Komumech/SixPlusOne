@@ -108,13 +108,16 @@
                             </div>
                             <div>
                                 <h2 class="bold">Project R4K</h2>
-                                <p class="about-book">
-                                    Life often throws storms we never prayed for. These could be loss, failure, betrayal, or any trial that shakes the very foundation of who we are. In <strong>Six Plus One: Lessons from the Eye of the Storm</strong>, author Chisom Nwanoro offers a profoundly insightful guide to navigating these moments.
+                                <p class="about-book about-book--project">
+                                    Imagine a young woman consumed by shattered hopes and profound psychological trauma after the death of her husband. She endures emotional trauma, societal stigmatization, financial pressure, and more. This crisis impacts about 15 million widows in Nigeria, which is why we are launching <strong>Project R4K (Resilience 4,000)</strong> to change this narrative.
                                 </p>
-                                <p class="about-book">
-                                    In this deeply personal and universally relatable book, Chisom Nwanoro shares essential lessons gleaned from her own crucible of life experience. She tackles the crushing weight of societal expectations, the power of vulnerability, and the path to finding strength in adversity.
-                                </p>
-                                 <button class="button-class"><a href="https://paystack.com/buy/six-plus-one">Donate Now</a></button>
+                                <div class="read-more-content" id="project-r4k-more">
+                                    <p class="about-book about-book--project">
+                                        Our mission is urgent: to equip 4,000 widows with a powerful guide—<strong>Six Plus One: Lessons from the Eyes of the Storm</strong>. This book is a survival blueprint written by a young widow, packed with critical, real-life nuggets and insights designed to pull anyone out of the emotional abyss and help them lead a purposeful, fulfilling life. Your donation is direct and transformative. Help us deliver resilience and rebuild lives.
+                                    </p>
+                                </div>
+                                <button class="read-more-btn" id="read-more-r4k-btn">Read More</button>
+                                <button class="button-class" style="margin-top: 1rem;"><a href="https://paystack.com/buy/six-plus-one">Donate Now</a></button>
                           </div>
                         </div>
                     </section>
@@ -151,6 +154,18 @@
 
             // Add loading class to body to prevent scrolling while preloader is visible
             document.body.classList.add('loading');
+
+            // --- Read More Button Logic ---
+            const readMoreBtn = document.getElementById('read-more-r4k-btn');
+            const readMoreContent = document.getElementById('project-r4k-more');
+
+            if (readMoreBtn && readMoreContent) {
+                readMoreBtn.addEventListener('click', () => {
+                    const isExpanded = readMoreContent.classList.toggle('is-expanded');
+                    readMoreBtn.textContent = isExpanded ? 'Read Less' : 'Read More';
+                });
+            }
+            // -----------------------------
 
             // --- Purchase Modal Logic ---
             const buyNowBtn = document.getElementById('buy-now-btn');
