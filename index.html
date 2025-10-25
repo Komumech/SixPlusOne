@@ -317,22 +317,22 @@
 
                 // 2. Animate the "writing" of the text
                 preloaderTimeline.to(words, {
-                    delay: 0.5, // Add a half-second delay before the animation starts
+                    delay: 0.2, // Shorten the initial delay
                     strokeDashoffset: 0,
-                    duration: 1.2, // Make the drawing animation a bit faster
-                    stagger: 0.3,
+                    duration: 1.0, // Make the drawing animation faster
+                    stagger: 0.2,
                     ease: "power1.inOut"
                 }).to(words, { // 3. Animate the "filling" of the text
                     fill: (i) => words[i].classList.contains('preloader-text-accent') ? 'var(--my-orange)' : '#181818',
-                    duration: 0.8
-                }, "-=0.8"); // Overlap the fill animation
+                    duration: 0.6
+                }, "-=0.7"); // Adjust the fill animation overlap
 
                 // 4. Fade out the entire preloader
                 preloaderTimeline.to(preloader, {
                     opacity: 0,
-                    duration: 1,
+                    duration: 0.5, // Make the fade-out faster
                     ease: "power1.inOut"
-                }, "+=0.3"); // Add a brief pause after the text is filled
+                }, "+=0.2"); // Shorten the pause after the text is filled
 
                 ScrollTrigger.refresh();
             });
