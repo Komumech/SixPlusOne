@@ -295,6 +295,13 @@ body::-webkit-scrollbar-thumb {
     padding-bottom: 2rem;
     
 }
+
+.thumbnail2{
+    width: 32rem;
+    padding-left: 4rem;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+}
 .bold{
     font-weight: 700;
     font-size: 2rem;
@@ -674,6 +681,7 @@ body::-webkit-scrollbar-thumb {
 /* --- Read More Functionality --- */
 .read-more-content {
     max-height: 0;
+    padding-top: 1rem;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
     opacity: 0;

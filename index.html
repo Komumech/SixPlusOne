@@ -94,17 +94,20 @@
                                 <p class="about-book">
                                     Life often throws storms we never prayed for. These could be loss, failure, betrayal, or any trial that shakes the very foundation of who we are. In <strong>Six Plus One: Lessons from the Eye of the Storm</strong>, author Chisom Nwanoro offers a profoundly insightful guide to navigating these moments.
                                 </p>
-                                <p class="about-book">
-                                    In this deeply personal and universally relatable book, Chisom Nwanoro shares essential lessons gleaned from her own crucible of life experience. She tackles the crushing weight of societal expectations, the power of vulnerability, and the path to finding strength in adversity.
-                                </p>
-                                <button class="button-class" id="buy-now-btn">Buy Now</button>
+                                <div class="read-more-content" id="about-book-more">
+                                    <p class="about-book">
+                                        In this deeply personal and universally relatable book, Chisom Nwanoro shares essential lessons gleaned from her own crucible of life experience. She tackles the crushing weight of societal expectations, the power of vulnerability, and the path to finding strength in adversity.
+                                    </p>
+                                </div>
+                                <button class="read-more-btn" id="read-more-about-btn">Read More</button>
+                                <button class="button-class" id="buy-now-btn" style="margin-top: 1rem;">Buy Now</button>
                             </div>
                         </div>
                     </section>
                     <section class="horizontal-panel">
                         <div class="sect3 sect2" id="project-r4k-section">
                             <div>
-                                <img src="Thumbnail.jpg" alt="The book cover for Six Plus One" class="thumbnail">
+                                <img src="Thumbnail2.jpg" alt="The book cover for Six Plus One" class="thumbnail2 thumbnail">
                             </div>
                             <div>
                                 <h2 class="bold">Project R4K</h2>
@@ -166,6 +169,18 @@
                 });
             }
             // -----------------------------
+
+            // --- Read More Button Logic (About Book) ---
+            const readMoreAboutBtn = document.getElementById('read-more-about-btn');
+            const readMoreAboutContent = document.getElementById('about-book-more');
+
+            if (readMoreAboutBtn && readMoreAboutContent) {
+                readMoreAboutBtn.addEventListener('click', () => {
+                    const isExpanded = readMoreAboutContent.classList.toggle('is-expanded');
+                    readMoreAboutBtn.textContent = isExpanded ? 'Read Less' : 'Read More';
+                });
+            }
+            // -----------------------------------------
 
             // --- Purchase Modal Logic ---
             const buyNowBtn = document.getElementById('buy-now-btn');
