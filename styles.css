@@ -203,11 +203,16 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     justify-content: space-between;
     position: relative;  /* ensure children (like video) don't overflow */
+    background-image: url('image.png'); /* Use the poster as a background */
+    background-size: cover;             /* Ensure it covers the area */
+    background-position: center;        /* Center the background image */
+    background-color: #181818;          /* Fallback color if image fails */
 }
 .nav {
   position: relative;
   background: rgba(255, 255, 255, 0.05); /* optional overlay */
   mask-image: url('rough-edge-mask.png'); /* your torn edge PNG */
+  /* The background styles from above will be masked by this */
   mask-size: cover;
   -webkit-mask-image: url('rough-edge-mask.png');
   -webkit-mask-size: cover;
