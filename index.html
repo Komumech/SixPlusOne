@@ -151,7 +151,7 @@
                     <hr class="rotate180">
                     <div class="to-go book-given">
                         <p class="number" id="books-to ">
-                            4000
+                            3935
                         <br>
                         <span class="info">
                             Books To Go
@@ -211,6 +211,26 @@
     </div>
 
     <script>
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const booksTotal = 4000;
+  const booksGotten = 65;
+  const booksRemaining = booksTotal - booksGotten;
+
+  const booksEl = document.getElementById('books-to');
+  if (booksEl) {
+    booksEl.textContent = booksRemaining.toLocaleString();
+  }
+});
+
+console.log(booksRemaining)
+
+
+
+
+
+
         document.addEventListener('DOMContentLoaded', () => {
             // Register the ScrollTrigger plugin with GSAP
             gsap.registerPlugin(ScrollTrigger);
