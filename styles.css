@@ -718,3 +718,49 @@ body::-webkit-scrollbar-thumb {
     letter-spacing: 0.08em;
     transition: color 0.2s ease;
 }
+.container{
+    height: fit-content;
+    background-color: #181818;
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    justify-self: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.book-given{
+    height: fit-content;
+    justify-content: center;
+    justify-self: center;
+    
+}
+.number{
+    font-size: 4.4rem;
+    font-weight: 700;
+    padding: 0px;
+    margin: 0px;
+    justify-content: center;
+    text-align: center;
+    justify-self: center;
+    color: var(--my-orange);
+}
+.info{
+    display: block;
+    padding-top: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+}
+.rotate180{
+    height: 9rem;
+    transform: rotate(180deg);
+    border: 1px solid rgb(255, 255, 255);
+}

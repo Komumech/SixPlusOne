@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Chiron+Sung+HK:ital,wght@0,200..900;1,200..900&family=Great+Vibes&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Telugu:wght@100..900&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Six Plus One</title>
         <link rel="icon" href="/favicon.jpg" type="image/x-icon">
@@ -124,6 +125,39 @@
                           </div>
                         </div>
                     </section>
+                </div>
+            </div>
+            <div class="book">
+                <div class="container">
+                    <div class="copies-given book-given">
+                        <p class="number" id="sponsored-books-count">
+                            0
+                            <br>
+                        <span class="info">
+                            Books Given
+                            </span>
+                            </p>
+                    </div>
+                    <hr class="rotate180">
+                    <div class="books-given book-given">
+                        <p class="number" id="books-given-count">
+                            0
+                            <br>
+                        <span class="info">
+                            Books Given
+                        </span>
+                        </p>
+                    </div>
+                    <hr class="rotate180">
+                    <div class="to-go book-given">
+                        <p class="number" id="books-to ">
+                            300
+                        <br>
+                        <span class="info">
+                            Books To Go
+                        </span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </main>
@@ -327,7 +361,7 @@
 
             // --- Intersection Observer for Animations ---
             // We exclude elements within the horizontal scroll container, as GSAP handles them.
-            const animatedElements = document.querySelectorAll('.rough-cont, .author-section');
+            const animatedElements = document.querySelectorAll('.rough-cont, .author-section, .impact-stats');
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -341,6 +375,29 @@
                 threshold: 0.1 // Trigger when 10% of the element is visible
             });
             animatedElements.forEach(el => observer.observe(el));
+
+            // --- GSAP Counter for Impact Stats ---
+            const statSection = document.querySelector('.impact-stats');
+            if (statSection) {
+                ScrollTrigger.create({
+                    trigger: statSection,
+                    start: "top 80%", // When the top of the section is 80% down the viewport
+                    once: true, // Only run the animation once
+                    onEnter: () => {
+                        gsap.utils.toArray('.stat-number').forEach(el => {
+                            const goal = parseInt(el.dataset.goal, 10);
+                            gsap.fromTo(el, 
+                                { innerText: 0 }, 
+                                { 
+                                    innerText: goal,
+                                    duration: 2,
+                                    ease: 'power2.out',
+                                    snap: { innerText: 1 } // Ensures we only see whole numbers
+                                });
+                        });
+                    }
+                });
+            }
 
             // --- Mobile Header Hide/Show on Scroll ---
             let lastScrollY = window.scrollY;
