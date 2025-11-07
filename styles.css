@@ -71,6 +71,7 @@ body {
 /* For Firefox */
 html {
     scrollbar-width: thin;
+    overflow-y: scroll; /* Always show scrollbar to prevent layout shift */
     scrollbar-color: var(--my-orange) var(--black);
 }
 
