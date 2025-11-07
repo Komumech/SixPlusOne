@@ -452,6 +452,7 @@ body::-webkit-scrollbar-thumb {
     border-radius: 8px;
     cursor: pointer;
     backdrop-filter: blur(5px);
+    transition: all 0.3s ease-in-out;
 }
 
 .mobile-menu-toggle span {
@@ -767,6 +768,7 @@ body::-webkit-scrollbar-thumb {
     }
     .container{
         flex-direction: column;
+        height: 33.5rem;
     }
     .rotate180{
         transform: rotate(90deg);
