@@ -770,5 +770,7 @@ body::-webkit-scrollbar-thumb {
     }
     .rotate180{
         transform: rotate(90deg);
+        margin: 0px;
+        padding: 0px;
     }
 }
